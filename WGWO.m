@@ -77,28 +77,6 @@ while  FEs < MaxFEs
     it=it+1;
 end
 end
-function [X] = CM(X,Xbest,MaxFEs,FEs,ub,lb,dim,m,ada_max,ada_min,Mt)
-%     ada_max=1;
-%     ada_min=0.2;
-    
-    ada =ada_min+FEs*((ada_max-ada_min)/MaxFEs);
-    M=1-((FEs)^(1/Mt)/(MaxFEs)^(1/Mt));
-    
-    for i=1:m
-        for j=1:dim
-            r3=rand();
-            if r3<ada
-                r4=rand();
-                if r4<0.5
-                    X(i,j)=Xbest(j)+M*((ub-lb)*rand+lb);
-                end
-                if r4>0.5
-                    X(i,j)=Xbest(j)-M*((ub-lb)*rand+lb);
-                end
-            end
-        end
-    end 
-end
 
 
 
